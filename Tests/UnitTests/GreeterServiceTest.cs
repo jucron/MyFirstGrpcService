@@ -4,8 +4,8 @@ using Moq;
 using MyFirstGrpcService;
 using MyFirstGrpcService.Services;
 
-namespace Tests
-{ 
+namespace Tests.UnitTests
+{
     public class GreeterServiceTest
     {
         private readonly Mock<ILogger<GreeterService>> _loggerMock;
