@@ -10,16 +10,16 @@ namespace Tests.Helpers
 {
     public class ResponseHelper
     {
-        internal static async Task<string> getPropertyFromResponse(string property, HttpResponseMessage response)
+        internal static async Task<string> getAsyncPropertyFromResponse(string property, HttpResponseMessage response)
         {
             var jsonResponse = await response.Content.ReadAsStringAsync();
 
-            if (! string.IsNullOrEmpty(jsonResponse))
+            if (!string.IsNullOrEmpty(jsonResponse))
             {
                 var jsonDoc = JsonDocument.Parse(jsonResponse);
                 var propertyValue = jsonDoc.RootElement.GetProperty(property);
 
-                if (propertyValue.ValueKind == JsonValueKind.String && propertyValue.GetString() != null)
+                if (IsJsonElementValid(propertyValue))
                 {
                     return propertyValue.GetString();
                 }
@@ -28,6 +28,13 @@ namespace Tests.Helpers
             
             return "";
 
+        }
+
+        private static bool IsJsonElementValid(JsonElement propertyValue)
+        {
+            return (propertyValue.ValueKind == JsonValueKind.Null ||
+                    propertyValue.ValueKind == JsonValueKind.Undefined ||
+                    propertyValue.GetString() != null);
         }
     }
 }

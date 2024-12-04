@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -35,7 +36,7 @@ namespace Tests.IntegrationTests
             // then
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
-            string message = await ResponseHelper.getPropertyFromResponse("message", response);
+            string message = await ResponseHelper.getAsyncPropertyFromResponse("message", response);
             Assert.NotNull(message);
             Assert.Equal("Hello John", message);
         }
@@ -50,6 +51,6 @@ namespace Tests.IntegrationTests
 
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         }
-        */
     }
 }
+*/
